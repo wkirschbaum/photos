@@ -3,16 +3,22 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/css/photos.css">
     <link href="/css/lightbox.min.css" rel="stylesheet">
+    <link href="/css/dropzone.min.css" rel="stylesheet">
   </head>
   <body>
+    <form class="dropzone" enctype="multipart/form-data" action="upload.php" method="POST"></form>
+
+    <hr />
+
     <?php
-      $dirname = "photos/";
+      $dirname = "../photos/";
       $images = glob($dirname."*.{gif,png,jpg,jpeg}", GLOB_BRACE);
       foreach($images as $image) {
-        include("_photo.php");
+        include("../_photo.php");
       }
     ?>
     <script src="/js/lightbox-plus-jquery.min.js"></script>
+    <script src="/js/dropzone.min.js"></script>
     <script>
       lightbox.option({
         'resizeDuration': 100,
