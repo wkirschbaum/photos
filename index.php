@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Spike Photos</title>
     <link rel="stylesheet" type="text/css" href="/css/photos.css">
     <link href="/css/lightbox.min.css" rel="stylesheet">
