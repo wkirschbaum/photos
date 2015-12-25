@@ -4,13 +4,23 @@
   $realm = 'Restricted area';
 
   if (empty($_SERVER['PHP_AUTH_DIGEST'])) {
-    set_unauthorized();
+    header('HTTP/1.1 401 Unauthorized');
+    header('WWW-Authenticate: Digest realm="'.$realm.
+           '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
+
+    die('You are not authorized to view this page.');
 }
 
 
   // analyze the PHP_AUTH_DIGEST variable
-  if (!($data = http_digest_parse($_SERVER['PHP_AUTH_DIGEST'])) || !isset($users[$data['username']]))
-      set_unauthorized();
+  if (!($data = http_digest_parse($_SERVER['PHP_AUTH_DIGEST'])) ||
+      !isset($users[$data['username']])) {
+      header('HTTP/1.1 401 Unauthorized');
+      header('WWW-Authenticate: Digest realm="'.$realm.
+             '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
+
+      die('You are not authorized to view this page.');
+  }
 
 
   // generate the valid response
@@ -19,18 +29,17 @@
   $valid_response = md5($A1.':'.$data['nonce'].':'.$data['nc'].':'.$data['cnonce'].':'.$data['qop'].':'.$A2);
 
   if ($data['response'] != $valid_response)
-      set_unauthorized();
+  {
+    header('HTTP/1.1 401 Unauthorized');
+    header('WWW-Authenticate: Digest realm="'.$realm.
+           '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
+
+    die('You are not authorized to view this page.');
+  }
 
   // ok, valid username & password
   echo 'You are logged in as: ' . $data['username'];
 
-
-  function set_unauthorized()
-  {
-    header('HTTP/1.1 401 Unauthorized');
-    header('WWW-Authenticate: Digest realm="'.$realm. '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
-    die('You are not authorized to view this page.');
-  }
 
   // function to parse the http auth header
   function http_digest_parse($txt)
