@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Happy Spike Photos</title>
     <link rel="stylesheet" type="text/css" href="/css/photos.css">
     <link href="/css/lightbox.min.css" rel="stylesheet">
   </head>
