@@ -3,13 +3,10 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/css/photos.css">
     <link href="/css/lightbox.min.css" rel="stylesheet">
+    <link href="/css/dropzone.min.css" rel="stylesheet">
   </head>
   <body>
-    <form action="upload.php" method="post" enctype="multipart/form-data" class="dropzone">
-      Select image to upload:
-      <input type="file" name="fileToUpload" id="fileToUpload">
-      <input type="submit" value="Upload Image" name="submit">
-    </form>
+    <form class="dropzone" enctype="multipart/form-data" action="upload.php" method="POST"></form>
 
     <hr />
 
@@ -21,7 +18,7 @@
       }
     ?>
     <script src="/js/lightbox-plus-jquery.min.js"></script>
-    <script src="/js/dropzone.js"></script>
+    <script src="/js/dropzone.min.js"></script>
     <script>
       lightbox.option({
         'resizeDuration': 100,
