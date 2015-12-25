@@ -20,7 +20,8 @@
         include("../_photo.php");
       }
     ?>
-    <script src="/js/lightbox-plus-jquery.min.js"></script>
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/lightbox.min.js"></script>
     <script src="/js/dropzone.min.js"></script>
     <script>
       lightbox.option({

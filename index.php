@@ -15,13 +15,17 @@
         include("_photo.php");
       }
     ?>
-    <script src="/js/lightbox-plus-jquery.min.js"></script>
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/jquery.lazyload.js"></script>
+    <script src="/js/lightbox.min.js"></script>
     <script>
       lightbox.option({
         'resizeDuration': 100,
         'wrapAround': true,
         'fitImagesInViewport': true,
-      })
+      });
+
+      $("img.lazy").lazyload();
     </script>
   </body>
 </html>
